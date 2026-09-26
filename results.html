@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TrainReady | Dataset Report</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="results-page">
+
+    <!-- =====================================================
+         NAVBAR
+         ===================================================== -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                TR
+            </div>
+
+            <span>
+                TrainReady
+            </span>
+
+        </div>
+
+
+        <a
+            href="index.html"
+            class="nav-upload-btn"
+        >
+            + Upload New Dataset
+        </a>
+
+    </nav>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="results-container">
+
+
+        <!-- =================================================
+             HEADER
+             ================================================= -->
+
+        <section class="results-header">
+
+            <div class="badge">
+                ✓ Dataset Analysis Complete
+            </div>
+
+
+            <h1>
+                Dataset <span>Report</span>
+            </h1>
+
+
+            <p>
+                Complete analysis of your uploaded dataset
+            </p>
+
+
+            <div
+                class="dataset-name"
+                id="datasetName"
+            >
+                Dataset
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             TRAINING READINESS
+             ================================================= -->
+
+        <section
+            class="readiness-card"
+            id="readinessCard"
+        >
+
+            <div
+                class="readiness-icon"
+                id="readinessIcon"
+            >
+                🎯
+            </div>
+
+
+            <div class="readiness-content">
+
+                <div class="readiness-label">
+                    TRAINING READINESS
+                </div>
+
+
+                <h2 id="readinessTitle">
+                    Checking dataset...
+                </h2>
+
+
+                <!-- READINESS PERCENTAGE -->
+
+                <div
+                    class="readiness-percentage"
+                    id="readinessPercentage"
+                >
+                    0%
+                </div>
+
+
+                <!-- READINESS PROGRESS BAR -->
+
+                <div class="readiness-progress">
+
+                    <div
+                        class="readiness-progress-bar"
+                        id="readinessProgressBar"
+                    ></div>
+
+                </div>
+
+
+                <!-- READINESS DESCRIPTION -->
+
+                <p id="readinessMessage">
+                    Analyzing whether your dataset is ready
+                    for model training.
+                </p>
+
+
+                <!-- ALL REASONS AFFECTING READINESS -->
+
+                <div
+                    class="readiness-reasons"
+                    id="readinessReasons"
+                >
+                </div>
+
+
+                <!-- EXISTING ISSUE CONTAINER -->
+
+                <div
+                    class="readiness-issues"
+                    id="readinessIssues"
+                >
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SUMMARY CARDS
+             ================================================= -->
+
+        <section class="summary-grid">
+
+
+            <!-- ROWS -->
+
+            <div class="summary-card purple-card">
+
+                <div class="summary-icon">
+                    ↕
+                </div>
+
+
+                <div>
+
+                    <span>
+                        TOTAL ROWS
+                    </span>
+
+
+                    <h2 id="totalRows">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- COLUMNS -->
+
+            <div class="summary-card blue-card">
+
+                <div class="summary-icon">
+                    ▦
+                </div>
+
+
+                <div>
+
+                    <span>
+                        TOTAL COLUMNS
+                    </span>
+
+
+                    <h2 id="totalColumns">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CELLS -->
+
+            <div class="summary-card pink-card">
+
+                <div class="summary-icon">
+                    #
+                </div>
+
+
+                <div>
+
+                    <span>
+                        TOTAL CELLS
+                    </span>
+
+
+                    <h2 id="totalCells">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- DUPLICATES -->
+
+            <div class="summary-card orange-card">
+
+                <div class="summary-icon">
+                    ⧉
+                </div>
+
+
+                <div>
+
+                    <span>
+                        DUPLICATE ROWS
+                    </span>
+
+
+                    <h2 id="duplicateRows">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CHARTS
+             ================================================= -->
+
+        <section class="charts-grid">
+
+
+            <!-- DATA TYPE DISTRIBUTION -->
+
+            <div class="chart-card">
+
+                <div class="result-title">
+
+                    <div class="result-title-icon purple-bg">
+                        📊
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Data Type Distribution
+                        </h3>
+
+
+                        <p>
+                            Types of data found in your dataset
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-wrapper">
+
+                    <canvas
+                        id="dataTypeChart"
+                    ></canvas>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TARGET DISTRIBUTION -->
+
+            <div
+                class="chart-card"
+                id="targetChartCard"
+            >
+
+                <div class="result-title">
+
+                    <div class="result-title-icon blue-bg">
+                        🎯
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Target Distribution
+                        </h3>
+
+
+                        <p id="targetChartDescription">
+                            Detected target column
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-wrapper">
+
+                    <canvas
+                        id="targetChart"
+                    ></canvas>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MISSING VALUES CHART
+             ================================================= -->
+
+        <section
+            class="chart-card full-chart"
+            id="missingChartCard"
+        >
+
+            <div class="result-title">
+
+                <div class="result-title-icon pink-bg">
+                    ⚠
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Missing Values
+                    </h3>
+
+
+                    <p>
+                        Missing data across dataset columns
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="missing-chart-wrapper">
+
+                <canvas
+                    id="missingChart"
+                ></canvas>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             DATASET PREVIEW
+             ================================================= -->
+
+        <section class="result-card">
+
+            <div class="result-title">
+
+                <div class="result-title-icon purple-bg">
+                    👁
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Dataset Preview
+                    </h3>
+
+
+                    <p>
+                        First 3 and last 3 rows
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="previewContainer"
+                class="table-container"
+            >
+
+                <p>
+                    Loading preview...
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             DATASET OVERVIEW
+             ================================================= -->
+
+        <section class="result-card">
+
+            <div class="result-title">
+
+                <div class="result-title-icon blue-bg">
+                    📋
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Dataset Overview
+                    </h3>
+
+
+                    <p>
+                        General information about your dataset
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="overviewContainer"
+                class="overview-grid"
+            >
+
+                <p>
+                    Loading overview...
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             COLUMNS & DATA TYPES
+             ================================================= -->
+
+        <section class="result-card">
+
+            <div class="result-title">
+
+                <div class="result-title-icon pink-bg">
+                    🧩
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Columns & Data Types
+                    </h3>
+
+
+                    <p>
+                        All columns detected in the dataset
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="columnsContainer"
+                class="columns-container"
+            >
+
+                <p>
+                    Loading columns...
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MISSING VALUES DETAILS
+             ================================================= -->
+
+        <section class="result-card">
+
+            <div class="result-title">
+
+                <div class="result-title-icon orange-bg">
+                    ⚠
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Missing Values Details
+                    </h3>
+
+
+                    <p>
+                        Columns containing missing values
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div id="missingContainer">
+
+                <p>
+                    Loading missing values...
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             KEY INSIGHTS
+             ================================================= -->
+
+        <section class="result-card">
+
+            <div class="result-title">
+
+                <div class="result-title-icon purple-bg">
+                    💡
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Key Insights
+                    </h3>
+
+
+                    <p>
+                        Important findings from the analysis
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="insightsContainer"
+                class="insights-container"
+            >
+
+                <p>
+                    Loading insights...
+                </p>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer>
+
+        © 2026 TrainReady —
+        Dataset Quality Analyzer
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TrainReady | Dataset Quality Analyzer</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <span class="logo-icon">TR</span>
+            <span>TrainReady</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How It Works</a>
+        </div>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-text">
+
+                <div class="badge">
+                    AI-Powered Dataset Analysis
+                </div>
+
+                <h1>
+                    Make Your Dataset
+                    <span>ML Ready.</span>
+                </h1>
+
+                <p>
+                    Upload your dataset and let TrainReady analyze its
+                    structure, quality, missing values, duplicates,
+                    data types and other important problems before
+                    machine learning.
+                </p>
+
+            </div>
+
+
+            <!-- ================= UPLOAD BOX ================= -->
+
+            <div class="upload-card">
+
+                <div class="upload-icon">
+                    ↑
+                </div>
+
+                <h2>Upload Your Dataset</h2>
+
+                <p class="upload-description">
+                    Upload one CSV or Excel file at a time.
+                </p>
+
+
+                <div class="drop-area" id="dropArea">
+
+                    <p>
+                        Drag & Drop your file here
+                    </p>
+
+                    <span>or</span>
+
+                    <label for="fileInput" class="browse-button">
+                        Browse File
+                    </label>
+
+                    <input
+                        type="file"
+                        id="fileInput"
+                        accept=".csv,.xlsx,.xls"
+                        hidden
+                    >
+
+                    <small>
+                        Supported: CSV, XLSX, XLS
+                    </small>
+
+                </div>
+
+
+                <!-- Selected file -->
+
+                <div
+                    class="selected-file"
+                    id="selectedFile"
+                    style="display: none;"
+                >
+
+                    <div class="file-info">
+
+                        <div class="file-icon">
+                            📄
+                        </div>
+
+                        <div>
+                            <strong id="fileName">
+                                Dataset
+                            </strong>
+
+                            <span id="fileSize">
+                                0 KB
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        id="removeFile"
+                        class="remove-button"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+                <!-- Analyze button -->
+
+                <button
+                    type="button"
+                    id="analyzeButton"
+                    class="analyze-button"
+                    disabled
+                >
+                    Analyze Dataset
+                    <span>→</span>
+                </button>
+
+
+                <p
+                    id="statusMessage"
+                    class="status-message"
+                ></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FEATURES ================= -->
+
+        <section
+            class="features-section"
+            id="features"
+        >
+
+            <div class="section-heading">
+
+                <div class="badge">
+                    What TrainReady Checks
+                </div>
+
+                <h2>
+                    Everything important,
+                    <span>in one report.</span>
+                </h2>
+
+                <p>
+                    TrainReady checks the dataset before you use it
+                    for machine learning.
+                </p>
+
+            </div>
+
+
+            <div class="feature-grid">
+
+                <div class="feature-card">
+                    <div class="feature-icon purple">📊</div>
+
+                    <h3>Dataset Structure</h3>
+
+                    <p>
+                        Understand rows, columns and overall dataset
+                        structure.
+                    </p>
+                </div>
+
+
+                <div class="feature-card">
+                    <div class="feature-icon blue">🔤</div>
+
+                    <h3>Data Types</h3>
+
+                    <p>
+                        Identify numerical, categorical and other
+                        column types.
+                    </p>
+                </div>
+
+
+                <div class="feature-card">
+                    <div class="feature-icon pink">⚠️</div>
+
+                    <h3>Data Quality</h3>
+
+                    <p>
+                        Detect missing values, duplicates and other
+                        quality problems.
+                    </p>
+                </div>
+
+
+                <div class="feature-card">
+                    <div class="feature-icon orange">🎯</div>
+
+                    <h3>ML Readiness</h3>
+
+                    <p>
+                        Check whether the dataset is ready for
+                        machine learning.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= HOW IT WORKS ================= -->
+
+        <section
+            class="how-section"
+            id="how-it-works"
+        >
+
+            <div class="section-heading">
+
+                <div class="badge">
+                    Simple Process
+                </div>
+
+                <h2>
+                    How <span>TrainReady</span> works
+                </h2>
+
+            </div>
+
+
+            <div class="steps">
+
+                <div class="step">
+
+                    <div class="step-number">
+                        01
+                    </div>
+
+                    <h3>Upload</h3>
+
+                    <p>
+                        Upload one CSV or Excel dataset.
+                    </p>
+
+                </div>
+
+
+                <div class="step-line"></div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        02
+                    </div>
+
+                    <h3>Analyze</h3>
+
+                    <p>
+                        TrainReady examines the dataset.
+                    </p>
+
+                </div>
+
+
+                <div class="step-line"></div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        03
+                    </div>
+
+                    <h3>Get Report</h3>
+
+                    <p>
+                        View a complete dataset quality report.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 TrainReady — Dataset Quality Analyzer
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
